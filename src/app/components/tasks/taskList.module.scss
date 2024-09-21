@@ -85,3 +85,9 @@
     border: solid rgba(7, 150, 211, 1); 
     border-width: 0 2px 2px 0;
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

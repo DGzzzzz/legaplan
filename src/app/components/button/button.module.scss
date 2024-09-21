@@ -1,0 +1,27 @@
+@import '../../styles/settings.module.scss';
+
+.button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 16px, 24px, 16px, 24px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+    &.add {
+        width: 450px;
+        height: 50px;
+        color: white;
+        background: $colors-button-add;
+    }
+
+    &.cancel {
+        background-color: #f44336;
+        color: white;
+    }
+
+    &.delete {
+        background-color: #f44336;
+        color: white;
+    }
+}
