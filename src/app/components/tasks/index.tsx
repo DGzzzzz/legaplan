@@ -4,15 +4,23 @@ import React from 'react';
 import Image from "next/image"
 import styles from './taskList.module.scss'
 import Button from '../button';
+import NewTaskModal from '../newTaskModal';
+import NewTask from '../newTask';
 
 const TaskList: React.FC = () => {
+    const [isNewTaskOpen, setIsNewTaskOpen] = React.useState(false);
+
     const handleAddTask = () => {
-        console.log('Adicionar tarefa')
+        setIsNewTaskOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsNewTaskOpen(false);
     }
 
     return (
         <>
-            <div className={styles.taskListContainer}>
+            <div className={isNewTaskOpen ? styles.taskListContainerBlur : styles.taskListContainer}>
                 <p className={styles.title}>Suas tarefas de hoje</p>
                 <ul className={styles.ul}>
                     <li className={styles.li}>
@@ -49,6 +57,9 @@ const TaskList: React.FC = () => {
             <div className={styles.buttonContainer}>
                 <Button type="add" onClick={handleAddTask}>Adicionar tarefa</Button>
             </div>
+            <NewTaskModal isOpen={isNewTaskOpen} onClose={handleCloseModal}>
+                <NewTask onClose={handleCloseModal}/>
+            </NewTaskModal>
         </>
     );
 };

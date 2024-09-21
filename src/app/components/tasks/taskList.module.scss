@@ -19,6 +19,20 @@
     }
 }
 
+.taskListContainerBlur {
+    width: 450px;
+    border: 1px solid #EAECF0;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 32px;
+    padding-bottom: 0;
+    box-shadow: 0 0 2px 0 rgba(16, 24, 40, 0.05);
+    opacity: 0.5;
+}
+
 .ul {
     list-style-type: none;
     
