@@ -4,12 +4,15 @@ import styles from "./newTask.module.scss";
 
 type NewTaskProps = {
     onClose: () => void;
+    addTask: (title: string) => void;
 }
 
-const NewTask: React.FC<NewTaskProps> = ({ onClose }) => {
+const NewTask: React.FC<NewTaskProps> = ({ onClose, addTask }) => {
+
+    const [title, setTitle] = React.useState('');
 
     const handleAddTask = () => {
-        console.log('Adicionando tarefa');
+        addTask(title);
     }
 
     const handleCancelTask = () => {
@@ -20,7 +23,7 @@ const NewTask: React.FC<NewTaskProps> = ({ onClose }) => {
         <div className={styles.taskContainer}>
             <h1 className={styles.h1}>Nova Tarefa</h1>
             <label htmlFor="title" className={styles.title}>Titulo</label>
-            <input type="text" id="title" placeholder="Digite" className={styles.input} />
+            <input type="text" id="title" placeholder="Digite" className={styles.input} value={title} onChange={(e) => setTitle(e.target.value)} />
             <div className={styles.buttonGroup}>
                 <Button type="cancel" onClick={handleCancelTask}>Cancelar</Button>
                 <Button type="addSave" onClick={handleAddTask}>Adicionar</Button>
