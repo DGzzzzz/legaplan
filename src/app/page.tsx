@@ -1,13 +1,14 @@
-import NewTask from './components/newTask';
+import Header from './components/header/header';
 import TaskList from './components/tasks';
 import './styles/globals.scss';
 
 export default function Home() {
-  
+
   return (
     <>
-      <TaskList />
-      <NewTask />
+      <Header>
+        <TaskList />
+      </Header>
     </>
   );
 }
