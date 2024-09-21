@@ -1,0 +1,25 @@
+.header {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 50px;
+    padding-bottom: 24px;
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logoContainer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title {
+            font-weight: 500;
+        }
+
+        .date {
+            font-weight: 400;
+        }
+    }
+}
