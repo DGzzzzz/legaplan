@@ -6,6 +6,7 @@
     border-radius: 8px;
     padding: 16px, 24px, 16px, 24px;
     font-size: 16px;
+    font-weight: 500;
     transition: background-color 0.3s;
 
     &.add {
@@ -27,7 +28,8 @@
     }
 
     &.delete {
-        background-color: #f44336;
+        @extend .addSave;
+        background: $colors-button-delete;
         color: white;
     }
 }
