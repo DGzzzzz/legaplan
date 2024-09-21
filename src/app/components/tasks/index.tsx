@@ -6,6 +6,8 @@ import styles from './taskList.module.scss'
 import Button from '../button';
 import NewTaskModal from '../newTaskModal';
 import NewTask from '../newTask';
+import ConfirmDeleteModal from '../confirmDeleteModal';
+import DelTaskModal from '../delTaskModal';
 
 type Task = {
     id: number;
@@ -50,6 +52,8 @@ const TaskList: React.FC = () => {
     };
 
     const [isNewTaskOpen, setIsNewTaskOpen] = React.useState(false);
+    const [isConfirmDelOpen, setIsConfirmDeleteOpen] = React.useState(false);
+    const [taskToDelete, setTaskToDelete] = React.useState<Task | null>(null);
 
     const handleAddTask = () => {
         setIsNewTaskOpen(true);
@@ -58,6 +62,24 @@ const TaskList: React.FC = () => {
     const handleCloseModal = () => {
         setIsNewTaskOpen(false);
     }
+
+    const handleDeleteTask = (task: Task) => {
+        setTaskToDelete(task);
+        setIsConfirmDeleteOpen(true);
+    }
+
+    const confirmDeleteTask = () => {
+        if (taskToDelete) {
+            setTasks(tasks.filter(task => task.id !== taskToDelete.id));
+            setTaskToDelete(null);
+            setIsConfirmDeleteOpen(false);
+        }
+    }
+
+    const closeConfirmDeleteModal = () => {
+        setIsConfirmDeleteOpen(false);
+        setTaskToDelete(null);
+    };
 
     return (
         <>
@@ -70,7 +92,7 @@ const TaskList: React.FC = () => {
                                 <input type="checkbox" id={`task${task.id}`} className={styles.checkbox} checked={task.completed} onChange={() => toggleTaskCompletion(task.id)} />
                                 <label htmlFor={`task${task.id}`}>{task.title}</label>
                             </div>
-                            <Image src="/assets/images/trash.png" alt="lixeira" width={24} height={24} />
+                            <Image src="/assets/images/trash.png" alt="lixeira" width={24} height={24} onClick={() => handleDeleteTask(task)} />
                         </li>
                     ))}
                 </ul>
@@ -81,7 +103,7 @@ const TaskList: React.FC = () => {
                             <input type="checkbox" id={`task${task.id}`} className={styles.checkbox} checked={task.completed}
                                 onChange={() => toggleTaskCompletion(task.id)} />
                             <label htmlFor={`task${task.id}`} className={task.completed ? styles.completedTask : ''}>{task.title}</label>
-                            <Image src="/assets/images/trash.png" alt="lixeira" width={24} height={24} />
+                            <Image src="/assets/images/trash.png" alt="lixeira" width={24} height={24} onClick={() => handleDeleteTask(task)} />
                         </li>
                     ))}
                 </ul>
@@ -92,6 +114,9 @@ const TaskList: React.FC = () => {
             <NewTaskModal isOpen={isNewTaskOpen} onClose={handleCloseModal}>
                 <NewTask onClose={handleCloseModal} addTask={addTask} />
             </NewTaskModal>
+            <DelTaskModal isOpen={isConfirmDelOpen} onClose={closeConfirmDeleteModal}>
+                <ConfirmDeleteModal isOpen={isConfirmDelOpen} onClose={closeConfirmDeleteModal} onConfirm={confirmDeleteTask} />
+            </DelTaskModal>
         </>
     );
 };
