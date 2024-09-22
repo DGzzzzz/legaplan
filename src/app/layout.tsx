@@ -14,6 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
+      <head>
+        <link rel="icon" href="/assets/images/Logomark.png" />
+        <title>FocalPoint</title>
+      </head>
       <body>
         {children}
       </body>
