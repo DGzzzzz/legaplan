@@ -1,3 +1,5 @@
+@import '../../styles/settings.module.scss';
+
 .taskContainer {
     width: 450;
     height: 450;
@@ -30,4 +32,15 @@
     display: flex;
     gap: 16px;
     margin: 32px;
+}
+
+@media (max-width: $breakpoint-sm) {
+
+    .input {
+        width: 272px;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+    }
 }

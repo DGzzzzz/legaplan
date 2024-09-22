@@ -33,3 +33,15 @@
         color: white;
     }
 }
+
+@media (max-width: $breakpoint-sm) {
+    .button {
+        &.add {
+            width: 95%;
+        }
+
+        &.addSave {
+            width: 100%;
+        }
+    }
+}

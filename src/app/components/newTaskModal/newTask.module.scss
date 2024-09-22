@@ -1,3 +1,5 @@
+@import '../../styles/settings.module.scss';
+
 .newTaskOverlay {
     position: fixed;
     top: 0;
@@ -27,4 +29,20 @@
     border: none;
     font-size: 16px;
     cursor: pointer;
+}
+
+@media (max-width: $breakpoint-sm) {
+
+    .newTaskOverlay {
+        justify-content: flex-start; 
+        align-items: flex-start;     
+    }
+
+    .newTask {
+        width: 100vw;   
+        height: 100vh;  
+        border-radius: 0; 
+        padding: 20px;  
+        margin-top: 0;  
+    }
 }
